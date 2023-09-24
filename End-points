@@ -1,0 +1,50 @@
+These are the endpoints of my laravel api:
+
+—Authentication—
+
+POST http://127.0.0.1:8000/api/register  // Register
+** to register an admin user: in the form-data add a Key:<usertype> with the Value:<admin>
+
+POST http://127.0.0.1:8000/api/login  // logging in
+Use the token to authenticate in your requests.
+
+POST http://127.0.0.1:8000/api/logout  // logging out
+
+
+
+—My games—
+
+GET http://127.0.0.1:8000/api/my_games //view my games
+Or also: http://127.0.0.1:8000/api/all_games?genre=action&sort=desc 
+
+POST http://127.0.0.1:8000/api/my_games //create a game
+**There are 4 fields to fill in the Body(form-data): title, genre, description, release_date. If there is an error you will get an understandable response to fix what is wrong, don’t worry.
+
+PATCH  http://127.0.0.1:8000/api/my_games/{game_id}   //edit a game
+**If there is an error you will get an understandable response to fix what is wrong, don’t worry.
+
+DEL  http://127.0.0.1:8000/api/my_games/{game_id}   //delete a game
+
+
+—All games—
+
+GET http://127.0.0.1:8000/api/all_games // view all games
+Or also: http://127.0.0.1:8000/api/all_games?genre=action&sort=desc 
+
+GET http://127.0.0.1:8000/api/game/{game_id} // view a single game
+
+
+—Review and Rating—
+
+POST http://127.0.0.1:8000/api/reviews/{game_id} //create a review
+DEL http://127.0.0.1:8000/api/reviews/{review_id}} //delete your reviews
+
+POST http://127.0.0.1:8000/api/ratings/{game_id} //create or update your rating
+DEL http://127.0.0.1:8000/api/ratings/{game_id}} //delete your rating
+
+
+—Admin actions—
+
+DEL http://127.0.0.1:8000/api/all_games/{game_id}   // delete any game  (only admin)
+DEL http://127.0.0.1:8000/api/any_review/{review_id} //delete any review (only admin)
+DEL http://127.0.0.1:8000/api/any_rating/{rating_id} //delete any rating (only admin)
