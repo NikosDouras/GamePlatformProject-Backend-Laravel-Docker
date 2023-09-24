@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class RatingsController extends Controller
 {
 
-    public function rate(Request $request, $gameId)
+    public function rate(Request $request, $id)
     {
-        $game = Game::find($gameId);
+        $game = Game::find($id);
 
         if (!$game) {
             return response()->json(['message' => 'Game not found'], 404);
@@ -20,13 +20,13 @@ class RatingsController extends Controller
 
         // Check if the user has already rated this game
         $existingRating = Rating::where('user_id', Auth::user()->id)
-            ->where('game_id', $gameId)
+            ->where('game_id', $id)
             ->first();
 
         if ($existingRating) {
             // If the user has already rated, update the existing rating
             $validatedData = $request->validate([
-                'rating' => 'required|integer|min:1|max:10', // Adjust validation rules as needed
+                'rating' => 'required|integer|min:1|max:10', 
             ]);
 
             $existingRating->rating = $validatedData['rating'];
@@ -36,12 +36,12 @@ class RatingsController extends Controller
         } else {
             // If the user hasn't rated, create a new rating
             $validatedData = $request->validate([
-                'rating' => 'required|integer|min:1|max:10', // Adjust validation rules as needed
+                'rating' => 'required|integer|min:1|max:10', 
             ]);
 
             $rating = new Rating([
                 'user_id' => Auth::user()->id,
-                'game_id' => $gameId,
+                'game_id' => $id,
                 'rating' => $validatedData['rating'],
             ]);
 
