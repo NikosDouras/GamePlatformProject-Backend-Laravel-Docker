@@ -8,7 +8,8 @@ Type:
 
 #docker ps -a (check that you have Docker installed and running, this is just for checking, its not a necessary step)
 
-#docker compose up -d (starts the app, -d: after the installation is finished the program is running in the background)
+#docker compose up -d (starts the app, -d: after the installation is finished the program is running in the background. This stage takes the longest by far!
+                       It can take up to 15-20 minutes to complete. Do not move on before it is finished)
 
 #docker compose exec laravelapp bash (enter the laravel bash to execute the migrations and -if you want- seeders)
 
