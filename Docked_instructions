@@ -1,1 +1,30 @@
+You need to have docker installed.
+
+open a bash inside the project folder (where the files app, bootstrap, config, database, etc, etc exist).
+
+
+
+Type:
+
+#docker ps -a (check that you have Docker installed and running, this is just for checking, its not a necessary step)
+
+#docker compose up -d (starts the app, -d: after the installation is finished the program is running in the background)
+
+#docker compose exec laravelapp bash (enter the laravel bash to execute the migrations and -if you want- seeders)
+
+#cd /var/www/html (Navigate to the Laravel project directory)
+
+#php artisan migrate (Run Laravel migrations)
+
+optional : #php artisan db:seed (If you want to fill up the tables with dummy data)
+
+You can now close the bash, hopefully everything went well. You can make requests locally : http://127.0.0.1:8000/api/..../.../... check out the End-points.txt.
+
+NOTE: If you have seeded just for test and now you want to have fresh empty tables, in the laravelapp bash type #php artisan migrate:refresh
+
+NOTE: You can use the #php artisan db:seed, but for some reason I could get it to fill up the ratings table with unique pairs of "user_id, game_id".
+This means that if you do use it, there will be instances where a user has rated more than once for a game (which of course is unacceptable). For testing 
+purposes this didn't cause any problems, and I believe that it will not cause any problems to you either. Also the User will not be able to rate more than 
+once for a specific game since that case has been covered in the RatingsController.php where we check if a User has already rated a game, and if he did, 
+the program simply replaces the old rating and informs the user that "Rating updated successfully".
 
