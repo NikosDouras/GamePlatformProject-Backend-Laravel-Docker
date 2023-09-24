@@ -5,19 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Resources\GameResource;
 use App\Http\Resources\ReviewResource;
+use App\Models\Game;
 use App\Models\Review;
 use Auth;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
 {
-    public function create_review(StoreReviewRequest $request, $game_id)
+    public function create_review(StoreReviewRequest $request, $id)
     {
-        //$request->validated($request->all());
+        $game = Game::find($id);
+
+        if (!$game) {
+            return response()->json(['message' => 'Game not found'], 404);
+        }
 
         $review = Review::create([
             'user_id' => Auth::user()->id,
-            'game_id' => $game_id,
+            'game_id' => $id,
             'content' => $request->content
         ]);
 
