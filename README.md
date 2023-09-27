@@ -3,8 +3,6 @@ Users can register, log in, log out, create-edit-delete their games, rate and re
 the user can delete any game/review/rating. For running with Docker, follow instructions in txt.
 #laravel #Docker #sanctum #Eloquent #laravel_validation #postman #SQL
 
-The .env file is missing, if you want to use Docker, check the instructions.
-
 For more information and diractions check out:
 
 -Docker_instructions.txt
