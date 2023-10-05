@@ -2,6 +2,8 @@ Using postman
 
 General instructions if you use POSTMAN:
 
+!!! If you chose to use the Ubuntu server replace the all the links with this: http://64.226.72.142:8000/api/.../...
+
 All tabs should have 2 Headers:
 	
 	Accept        ->        application/vnd.api+json
