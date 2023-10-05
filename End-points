@@ -1,5 +1,7 @@
 These are the endpoints of my laravel api:
 
+!!! If you chose to use the Ubuntu server replace the all the links with this: http://64.226.72.142:8000/api/.../...
+
 —Authentication—
 
 POST http://127.0.0.1:8000/api/register  // Register
